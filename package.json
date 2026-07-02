@@ -1,0 +1,55 @@
+{
+  "name": "@blacklight/platform",
+  "version": "1.0.0",
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blacklight-kit/platform.git"
+  },
+  "main": "dist/src/index.js",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && tsc --build",
+    "clean": "rm -rf dist/",
+    "prepare": "pnpm run build",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test:unit": "mocha tests/**.ts tests/**/*.ts",
+    "test": "pnpm run build && pnpm run test:unit",
+    "ci": "pnpm run lint && pnpm run typecheck && pnpm run test",
+    "dev": "wrangler dev --local"
+  },
+  "dependencies": {
+    "@blacklight/player": "github:blacklight-kit/player#v1.0.1",
+    "@cloudflare/workers-types": "^4.20260518.1",
+    "@trpc/server": "^11.11.0",
+    "wrangler": "^4.92.0",
+    "xal-node": "^1.1.6-beta2",
+    "xbox-webapi": "2.0.0-beta4",
+    "zod": "^4.3.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/chai": "^5.2.3",
+    "@types/debug": "^4.1.13",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^25.9.3",
+    "chai": "^6.2.1",
+    "eslint": "^9.39.2",
+    "globals": "^16.2.0",
+    "mocha": "^11.7.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1"
+  },
+  "packageManager": "pnpm@10.4.1"
+}
